@@ -1,4 +1,4 @@
-# Software Architecture Applied To Game Engines - ArtFX 2020
+# Software Architecture Applied To Game Engines - ArtFX 2025
 
 This repository contains the materials for the course on software architecture. It features a game project, whose architecture is a lighter version of industrial-grade ones.
 
