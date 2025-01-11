@@ -10,3 +10,5 @@ compile_commands.json
 CTestTestfile.cmake
 _deps
 StealthFactor/build/
+StealthFactor/bin32/
+StealthFactor/bin64/
