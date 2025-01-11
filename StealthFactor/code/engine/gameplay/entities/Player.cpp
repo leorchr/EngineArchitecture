@@ -6,8 +6,8 @@
 
 Player::Player()
 {
-	std::shared_ptr<Component> comp = std::make_shared<ShapeComponent>(*this, "player");
-	comp->initialize();
+	shapeComp = std::make_shared<ShapeComponent>(*this, "player");
+	shapeComp->initialize();
 	
 	inputComp = std::make_shared<PlayerInputComponent>(*this);
 	inputComp->initialize();
@@ -15,6 +15,8 @@ Player::Player()
 	physicsComponent = std::make_shared<PlayerPhysicsComponent>(*this);
 	physicsComponent->initialize();
 }
+
+Player::~Player(){}
 
 void Player::update()
 {

@@ -7,6 +7,7 @@ class Enemy : public Character
 {
 public:
 	Enemy(const std::string &archetypeName);
+	virtual ~Enemy() override;
 
 	virtual void update() override;
 

@@ -32,33 +32,6 @@ GraphicsManager::~GraphicsManager()
 	sharedWindow->close();
 }
 
-void GraphicsManager::update()
-{
-	//input::Manager::getInstance().clear();
-
-	// sf::Event event;
-	// while (window.pollEvent(event))
-	// {
-	// 	switch (event.type)
-	// 	{
-	// 	case sf::Event::Closed:
-	// 		Engine::getInstance().exit();
-	// 		break;
-	//
-	// 	case sf::Event::KeyPressed:
-	// 		input::Manager::getInstance().onKeyPressed(event.key);
-	// 		break;
-	//
-	// 	case sf::Event::KeyReleased:
-	// 		input::Manager::getInstance().onKeyReleased(event.key);
-	// 		break;
-	//
-	// 	default:
-	// 		break;
-	// 	}
-	// }
-}
-
 void GraphicsManager::clear()
 {
 	sharedWindow->clear(sf::Color::Black);
@@ -100,9 +73,14 @@ void GraphicsManager::addShape(ShapeComponent* shapeComponent)
 
 void GraphicsManager::removeShape(ShapeComponent* shapeComponent)
 {
+	if (!shapeComponent) {
+		return;
+	}
+
 	auto it = std::find(shapesToDraw.begin(), shapesToDraw.end(), shapeComponent);
 	if (it != shapesToDraw.end()) {
-		shapesToDraw.erase(it);
+		shapesToDraw.erase(it); // Supprime l'élément du vector
+		//delete *it;
 	}
 }
 

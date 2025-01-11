@@ -12,7 +12,6 @@ public:
 
 protected:
 	ShapeList shapeList;
-	dGeomID collisionGeomId;
 
 	bool isWalking{ false };
 };

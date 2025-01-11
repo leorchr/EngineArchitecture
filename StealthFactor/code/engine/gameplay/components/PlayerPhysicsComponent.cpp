@@ -15,7 +15,9 @@ PlayerPhysicsComponent::PlayerPhysicsComponent(Entity& entity) : PhysicsComponen
     player = dynamic_cast<Player*>(&entity);
 }
 
-PlayerPhysicsComponent::~PlayerPhysicsComponent(){}
+PlayerPhysicsComponent::~PlayerPhysicsComponent()
+{
+}
 
 void PlayerPhysicsComponent::update()
 {
@@ -23,20 +25,26 @@ void PlayerPhysicsComponent::update()
     {
         auto &position = entity.getPosition();
         dGeomSetPosition(collisionGeomId, position.x, position.y, 0);
-    }
-
-    auto collisions = context->physicsManager->getCollisionsWith(collisionGeomId);
-    for (auto &geomId : collisions)
-    {
-        auto component = reinterpret_cast<PhysicsComponent *>(dGeomGetData(geomId));
-		  
-        if (component)
+        auto collisions = context->physicsManager->getCollisionsWith(collisionGeomId);
+        for (auto &geomId : collisions)
         {
-            auto targetEntity = dynamic_cast<Target*>(component->getEntity());
-            if (targetEntity)
+            void *data = dGeomGetData(geomId);
+            if (!data)
             {
-                context->gameplayManager->loadNextMap();
+                return;
+            }
+            
+            auto component = reinterpret_cast<PhysicsComponent *>(dGeomGetData(geomId));
+		      
+            if (component && component->isValid())
+            {
+                auto targetEntity = dynamic_cast<Target*>(component->getEntity());
+                if (targetEntity)
+                {
+                    context->gameplayManager->loadNextMap();
+                }
             }
         }
     }
+
 }

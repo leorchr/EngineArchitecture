@@ -17,7 +17,10 @@ ShapeComponent::ShapeComponent(Entity& entityP, std::string shapeName) : Compone
 
 ShapeComponent::~ShapeComponent()
 {
-	if(graphicsManager) graphicsManager->removeShape(this);
+	if(Engine::getInstance().getContext().graphicsManager)
+	{
+		Engine::getInstance().getContext().graphicsManager->removeShape(this);
+	}
 }
 
 void ShapeComponent::draw(sf::RenderWindow& window)

@@ -23,13 +23,22 @@ PhysicsManager::~PhysicsManager()
 
 void PhysicsManager::update()
 {
-	frameCollisions.clear();
 	dSpaceCollide(spaceId, &frameCollisions, &PhysicsManager::nearCallback);
+}
+
+void PhysicsManager::clear()
+{
+	frameCollisions.clear();
 }
 
 dSpaceID PhysicsManager::getSpaceId() const
 {
 	return spaceId;
+}
+
+void PhysicsManager::setSpaceId(dSpaceID newSpaceId)
+{
+	spaceId = newSpaceId;
 }
 
 std::set<dGeomID> PhysicsManager::getCollisionsWith(dGeomID object) const

@@ -11,7 +11,7 @@ namespace sf {
 class Entity
 {
 public:
-	virtual ~Entity() = default;
+	virtual ~Entity() =default;
 
 	virtual void update() = 0;
 

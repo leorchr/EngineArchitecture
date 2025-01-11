@@ -8,9 +8,10 @@ class PhysicsComponent : public Component
 {
 public:
     PhysicsComponent(Entity& entity);
-    ~PhysicsComponent();
+    virtual ~PhysicsComponent();
 
     virtual void update();
+    bool isValid() const;
 
 protected:
     dGeomID collisionGeomId;

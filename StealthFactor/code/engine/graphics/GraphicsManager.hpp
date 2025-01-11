@@ -16,8 +16,6 @@ public:
 	GraphicsManager(std::shared_ptr<sf::RenderWindow> window);
 	~GraphicsManager();
 
-	void update();
-
 	void clear();
 	void draw();
 	void display();

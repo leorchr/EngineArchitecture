@@ -58,23 +58,18 @@ void Engine::run()
 		}
 		
 		context->graphicsManager->clear();
-		context->graphicsManager->draw();
+		
+		context->physicsManager->update();
 		context->gameplayManager->update();
 
-		context->physicsManager->update();
-		// physics::Manager::getInstance().update();
+		context->graphicsManager->draw();
 		context->graphicsManager->display();
+		
 		context->inputManager->clear();
 
-
-		// Need Garbage Collector
 		
-		// gameplay::Manager::getInstance().garbageCollector();
-		
-		// for(auto actor : context->gameplayManager->getEntities())
-		// {
-		// 	delete actor;
-		// }
+		context->gameplayManager->garbageCollector();
+		context->physicsManager->clear();
 	}
 }
 

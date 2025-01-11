@@ -5,7 +5,7 @@ class PlayerPhysicsComponent : public PhysicsComponent
 {
 public:
     PlayerPhysicsComponent(Entity& entity);
-    ~PlayerPhysicsComponent();
+    virtual ~PlayerPhysicsComponent() override;
 
     virtual void update() override;
 

@@ -16,6 +16,8 @@ Enemy::Enemy(const std::string &archetypeName)
 	loadArchetype(archetypeName);
 }
 
+Enemy::~Enemy() {}
+
 void Enemy::update()
 {
 	auto &player = gameplayManager->getPlayer();

@@ -23,8 +23,10 @@ public:
 	~PhysicsManager();
 
 	void update();
+	void clear();
 
 	dSpaceID getSpaceId() const;
+	void setSpaceId(dSpaceID newSpaceId);
 
 	std::set<dGeomID> getCollisionsWith(dGeomID object) const;
 

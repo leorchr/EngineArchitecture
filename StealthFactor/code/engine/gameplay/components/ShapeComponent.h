@@ -11,7 +11,7 @@ class ShapeComponent : public Component
 {
 public:
 	ShapeComponent(class Entity& entity, std::string shapeName);
-	~ShapeComponent();
+	~ShapeComponent() override;
 	virtual void draw(sf::RenderWindow& window);
 private:
 	ShapeList shapeList;

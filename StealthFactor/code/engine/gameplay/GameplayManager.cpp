@@ -12,6 +12,8 @@
 #include <engine/gameplay/entities/Target.hpp>
 #include <engine/gameplay/Entity.hpp>
 
+#include "engine/physics/PhysicsManager.hpp"
+
 const float GameplayManager::CELL_SIZE = 50.f;
 
 void GameplayManager::update()
@@ -20,7 +22,6 @@ void GameplayManager::update()
 	{
 		if(!entity->isDead) entity->update();
 	}
-
 	preventMapCompletion = false;
 	if (nextMapRequested && !nextMapName.empty())
 	{
@@ -32,6 +33,7 @@ void GameplayManager::update()
 void GameplayManager::gameOver()
 {
 	std::cout << "Game over" << std::endl;
+	Engine::getInstance().getContext().physicsManager->setSpaceId(dHashSpaceCreate(0));
 	loadMap(currentMapName);
 }
 
@@ -82,6 +84,19 @@ void GameplayManager::loadMap(const std::string & mapName)
 				entities.insert(entity);
 			}
 
+			if (!std::strcmp(xmlElement.name(), "target"))
+			{
+				int row = std::stoi(xmlElement.child_value("row"));
+				assert(row >= 0 && row < rows);
+
+				int column = std::stoi(xmlElement.child_value("column"));
+				assert(column >= 0 && column < columns);
+
+				auto entity = new Target{};
+				entity->setPosition(sf::Vector2f{ (column + 0.5f) * CELL_SIZE, (row + 0.5f) * CELL_SIZE });
+
+				entities.insert(entity);
+			}
 			if (!std::strcmp(xmlElement.name(), "player"))
 			{
 				int row = std::stoi(xmlElement.child_value("row"));
@@ -97,19 +112,6 @@ void GameplayManager::loadMap(const std::string & mapName)
 				playerEntity = entity;
 			}
 
-			if (!std::strcmp(xmlElement.name(), "target"))
-			{
-				int row = std::stoi(xmlElement.child_value("row"));
-				assert(row >= 0 && row < rows);
-
-				int column = std::stoi(xmlElement.child_value("column"));
-				assert(column >= 0 && column < columns);
-
-				auto entity = new Target{};
-				entity->setPosition(sf::Vector2f{ (column + 0.5f) * CELL_SIZE, (row + 0.5f) * CELL_SIZE });
-
-				entities.insert(entity);
-			}
 		}
 
 		currentMapName = mapName;
@@ -132,6 +134,7 @@ void GameplayManager::loadNextMap()
 	if (!preventMapCompletion)
 	{
 		nextMapRequested = true;
+		Engine::getInstance().getContext().physicsManager->setSpaceId(dHashSpaceCreate(0));
 	}
 }
 
@@ -143,13 +146,18 @@ const Player &GameplayManager::getPlayer() const
 
 void GameplayManager::garbageCollector()
 {
-	for (auto entity : entities)
-	{
-		if(entity->isDead)
-		{
-			//entities.erase(entity);
-		}
-	}
+	for (auto it = entities.begin(); it != entities.end(); )
+    {
+        if ((*it)->isDead)
+        {
+        	delete *it;
+            it = entities.erase(it); // Retourne le nouvel itérateur après la suppression
+        }
+        else
+        {
+            ++it; // Passe au suivant si aucune suppression
+        }
+    }
 }
 
 std::set<Entity*> GameplayManager::getEntities()

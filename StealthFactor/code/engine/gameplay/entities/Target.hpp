@@ -7,7 +7,7 @@ class Target : public Entity
 {
 public:
 	Target();
-	~Target();
+	virtual ~Target() override;
 
 	virtual void update() override;
 
