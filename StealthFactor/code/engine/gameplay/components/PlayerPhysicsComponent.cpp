@@ -10,7 +10,7 @@ PlayerPhysicsComponent::PlayerPhysicsComponent(Entity& entity) : PhysicsComponen
 {
     context = &Engine::getInstance().getContext();
 
-    collisionGeomId = dCreateBox(context->physicsManager->getSpaceId(), context->gameplayManager->CELL_SIZE * 0.9f, context->gameplayManager->CELL_SIZE * 0.9f, 1.f);
+    collisionGeomId = dCreateBox(context->physicsManager->getSpaceId(), GameplayManager::CELL_SIZE * 0.9f, GameplayManager::CELL_SIZE * 0.9f, 1.f);
     dGeomSetData(collisionGeomId, this);
     player = dynamic_cast<Player*>(&entity);
 }

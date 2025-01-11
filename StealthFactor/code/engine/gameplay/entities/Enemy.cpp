@@ -1,48 +1,48 @@
 #include "Enemy.hpp"
-#include "engine/gameplay/components/ShapeComponent.h"
 
+#include "engine/Engine.hpp"
+#include "engine/gameplay/GameplayManager.hpp"
+#include "engine/gameplay/components/ShapeComponent.h"
+#include "engine/gameplay/entities/Player.hpp"
+
+#include <pugixml/pugixml.hpp>
 #include <iostream>
 #include <sstream>
-#include <pugixml/pugixml.hpp>
-#include <engine/gameplay/GameplayManager.hpp>
-#include <engine/gameplay/entities/Player.hpp>
-#include <engine/gameplay/Entity.hpp>
 
 
 Enemy::Enemy(const std::string &archetypeName)
 {
+	gameplayManager = Engine::getInstance().getContext().gameplayManager;
 	loadArchetype(archetypeName);
-	std::shared_ptr<Component> comp = std::make_shared<ShapeComponent>(*this, "player");
-	comp->initialize();
 }
 
 void Enemy::update()
 {
-	// auto &player = GameplayManager::getInstance().getPlayer();
-	// if (player.hasJustMoved())
-	// {
-	// 	auto &playerPosition = player.getPosition();
-	// 	auto &myPosition = getPosition();
-	//
-	// 	auto offset = myPosition - playerPosition;
-	// 	offset /= GameplayManager::CELL_SIZE;
-	// 	float distance2 = offset.x * offset.x + offset.y * offset.y;
-	// 	if (distance2 <= visionRadius * visionRadius)
-	// 	{
-	// 		if (shootDelayCounter < shootDelay)
-	// 		{
-	// 			++shootDelayCounter;
-	// 		}
-	// 		else
-	// 		{
-	// 			GameplayManager::getInstance().gameOver();
-	// 		}
-	// 	}
-	// 	else
-	// 	{
-	// 		shootDelayCounter = 0;
-	// 	}
-	// }
+	auto &player = gameplayManager->getPlayer();
+	if (player.hasJustMoved())
+	{
+		auto &playerPosition = player.getPosition();
+		auto &myPosition = getPosition();
+	
+		auto offset = myPosition - playerPosition;
+		offset /= GameplayManager::CELL_SIZE;
+		float distance2 = offset.x * offset.x + offset.y * offset.y;
+		if (distance2 <= visionRadius * visionRadius)
+		{
+			if (shootDelayCounter < shootDelay)
+			{
+				++shootDelayCounter;
+			}
+			else
+			{
+				gameplayManager->gameOver();
+			}
+		}
+		else
+		{
+			shootDelayCounter = 0;
+		}
+	}
 }
 
 void Enemy::loadArchetype(const std::string &archetypeName)
@@ -59,7 +59,8 @@ void Enemy::loadArchetype(const std::string &archetypeName)
 		auto xmlArchetype = doc.first_child();
 
 		std::string shapeListName = xmlArchetype.child_value("shapelist");
-		assert(shapeList.load(shapeListName));
+		std::shared_ptr<Component> comp = std::make_shared<ShapeComponent>(*this, shapeListName);
+		comp->initialize();
 
 		visionRadius = std::stof(xmlArchetype.child_value("vision_radius"));
 		assert(visionRadius > 0.f);

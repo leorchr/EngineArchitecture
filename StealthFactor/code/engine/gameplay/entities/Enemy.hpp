@@ -16,4 +16,6 @@ private:
 	int shootDelayCounter{ 0 };
 
 	void loadArchetype(const std::string &archetypeName);
+
+	std::shared_ptr<class GameplayManager> gameplayManager;
 };
