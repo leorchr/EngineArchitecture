@@ -1,5 +1,5 @@
 #pragma once
-#include <engine/gameplay/entities/Character.hpp>
+#include "engine/gameplay/entities/Character.hpp"
 
 class Player : public Character
 {
@@ -13,6 +13,7 @@ private:
 	bool justMoved{ false };
 
 	std::shared_ptr<class PlayerInputComponent> inputComp;
-
+	std::shared_ptr<class PlayerPhysicsComponent> physicsComponent;
+	
 	struct Context* context;
 };
