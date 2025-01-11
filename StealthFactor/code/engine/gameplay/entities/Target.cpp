@@ -5,11 +5,9 @@
 
 Target::Target()
 {
-	std::shared_ptr<Component> comp = std::make_shared<ShapeComponent>(*this, "target");
-	comp->initialize();
+	shapeComp = std::make_shared<ShapeComponent>(*this, "target");
 	
 	physicsComponent = std::make_shared<PhysicsComponent>(*this);
-	physicsComponent->initialize();
 }
 
 Target::~Target(){}

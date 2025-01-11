@@ -13,5 +13,6 @@ public:
 
 private:
 	ShapeList shapeList;
+	std::shared_ptr<class Component> shapeComp;
 	std::shared_ptr<class PhysicsComponent> physicsComponent;
 };

@@ -61,8 +61,7 @@ void Enemy::loadArchetype(const std::string &archetypeName)
 		auto xmlArchetype = doc.first_child();
 
 		std::string shapeListName = xmlArchetype.child_value("shapelist");
-		std::shared_ptr<Component> comp = std::make_shared<ShapeComponent>(*this, shapeListName);
-		comp->initialize();
+		shapeComp = std::make_shared<ShapeComponent>(*this, shapeListName);
 
 		visionRadius = std::stof(xmlArchetype.child_value("vision_radius"));
 		assert(visionRadius > 0.f);

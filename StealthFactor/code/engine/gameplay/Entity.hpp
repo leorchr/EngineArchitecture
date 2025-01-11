@@ -21,9 +21,6 @@ public:
 	float getRotation() const;
 	void setRotation(float newRotation);
 
-	void addComponent(std::shared_ptr<class Component> component);
-	void removeComponent(std::shared_ptr<class Component> component);
-
 	const sf::Transform &getTransform() const;
 	bool isDead = false;
 
@@ -31,7 +28,5 @@ private:
 	sf::Vector2f _position{};
 	float _rotation{ 0.f };
 	sf::Transform _transform;
-
-	std::vector<std::shared_ptr<class Component>> components;
 	void updateTransform();
 };

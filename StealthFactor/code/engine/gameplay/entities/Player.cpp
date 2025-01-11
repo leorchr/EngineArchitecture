@@ -7,13 +7,10 @@
 Player::Player()
 {
 	shapeComp = std::make_shared<ShapeComponent>(*this, "player");
-	shapeComp->initialize();
 	
 	inputComp = std::make_shared<PlayerInputComponent>(*this);
-	inputComp->initialize();
 
 	physicsComponent = std::make_shared<PlayerPhysicsComponent>(*this);
-	physicsComponent->initialize();
 }
 
 Player::~Player(){}

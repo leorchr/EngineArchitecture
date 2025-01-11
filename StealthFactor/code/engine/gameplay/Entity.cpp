@@ -23,20 +23,6 @@ void Entity::setRotation(float newRotation)
 	updateTransform();
 }
 
-void Entity::addComponent(std::shared_ptr<Component> component)
-{
-	if(component) components.push_back(component);
-}
-
-void Entity::removeComponent(std::shared_ptr<Component> component)
-{
-	auto it = std::find(components.begin(), components.end(), component);
-	if(it != components.end())
-	{
-		components.erase(it);
-	}
-}
-
 const sf::Transform & Entity::getTransform() const
 {
 	return _transform;
