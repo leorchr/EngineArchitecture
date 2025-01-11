@@ -19,7 +19,7 @@ Open a terminal in _StealthFactor_ directory and follow the instructions for you
 
 ### Windows
 
-    premake5.exe vs2019
+    premake5.exe vs2022
 
 Open _build\StealthFactor.sln_, choose your target, and build.
 
