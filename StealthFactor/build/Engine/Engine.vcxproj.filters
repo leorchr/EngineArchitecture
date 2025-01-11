@@ -70,6 +70,12 @@
     <ClInclude Include="..\..\code\engine\gameplay\components\ShapeComponent.h">
       <Filter>gameplay\components</Filter>
     </ClInclude>
+    <ClInclude Include="PlayerPhysicsComponent.h">
+      <Filter>gameplay\components</Filter>
+    </ClInclude>
+    <ClInclude Include="PhysicsComponent.h">
+      <Filter>gameplay\components</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\code\engine\Engine.cpp" />
@@ -117,6 +123,12 @@
       <Filter>gameplay\components</Filter>
     </ClCompile>
     <ClCompile Include="..\..\code\engine\gameplay\components\ShapeComponent.cpp">
+      <Filter>gameplay\components</Filter>
+    </ClCompile>
+    <ClCompile Include="PhysicsComponent.cpp">
+      <Filter>gameplay\components</Filter>
+    </ClCompile>
+    <ClCompile Include="PlayerPhysicsComponent.cpp">
       <Filter>gameplay\components</Filter>
     </ClCompile>
   </ItemGroup>

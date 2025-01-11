@@ -400,6 +400,8 @@
     <ClInclude Include="..\..\code\engine\input\InputManager.hpp" />
     <ClInclude Include="..\..\code\engine\physics\PhysicsManager.hpp" />
     <ClInclude Include="..\..\code\engine\util\StringId.hpp" />
+    <ClInclude Include="PhysicsComponent.h" />
+    <ClInclude Include="PlayerPhysicsComponent.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\code\engine\Engine.cpp" />
@@ -419,6 +421,8 @@
     <ClCompile Include="..\..\code\engine\main.cpp" />
     <ClCompile Include="..\..\code\engine\physics\PhysicsManager.cpp" />
     <ClCompile Include="..\..\code\engine\util\StringId.cpp" />
+    <ClCompile Include="PhysicsComponent.cpp" />
+    <ClCompile Include="PlayerPhysicsComponent.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

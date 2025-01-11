@@ -7,9 +7,12 @@ public:
 	Player();
 	virtual void update() override;
 	bool hasJustMoved() const;
+	void setJustMoved(bool pJustMoved);
 
 private:
 	bool justMoved{ false };
 
 	std::shared_ptr<class PlayerInputComponent> inputComp;
+
+	struct Context* context;
 };

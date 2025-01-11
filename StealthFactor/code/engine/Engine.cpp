@@ -10,6 +10,8 @@
 #include <SFML/Graphics/RenderWindow.hpp>
 #include <engine/input/InputManager.hpp>
 
+#include "physics/PhysicsManager.hpp"
+
 Engine *Engine::instance = nullptr;
 
 void Engine::loadConfiguration()
@@ -41,6 +43,7 @@ void Engine::run()
 	context->graphicsManager = std::make_shared<GraphicsManager>(window);
 
 	context->inputManager = std::make_shared<InputManager>();
+	context->physicsManager = std::make_shared<PhysicsManager>();
 
 	context->gameplayManager->loadMap(startMap);
 
@@ -57,7 +60,8 @@ void Engine::run()
 		context->graphicsManager->clear();
 		context->graphicsManager->draw();
 		context->gameplayManager->update();
-		
+
+		context->physicsManager->update();
 		// physics::Manager::getInstance().update();
 		context->graphicsManager->display();
 		context->inputManager->clear();

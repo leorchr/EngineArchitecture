@@ -47,5 +47,6 @@ void PlayerInputComponent::update()
 	{
 		player->setPosition(position);
 		player->setRotation(rotation);
+		player->setJustMoved(justMoved);
 	}
 }

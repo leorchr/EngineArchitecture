@@ -9,6 +9,7 @@ struct Context
 	std::shared_ptr<class GraphicsManager> graphicsManager;
 	std::shared_ptr<class GameplayManager> gameplayManager;
 	std::shared_ptr<class InputManager> inputManager;
+	std::shared_ptr<class PhysicsManager> physicsManager;
 };
 
 
