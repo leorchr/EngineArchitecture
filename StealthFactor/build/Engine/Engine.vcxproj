@@ -387,7 +387,9 @@
     <ClInclude Include="..\..\code\engine\Engine.hpp" />
     <ClInclude Include="..\..\code\engine\gameplay\components\Component.h" />
     <ClInclude Include="..\..\code\engine\gameplay\components\InputComponent.h" />
+    <ClInclude Include="..\..\code\engine\gameplay\components\PhysicsComponent.h" />
     <ClInclude Include="..\..\code\engine\gameplay\components\PlayerInputComponent.h" />
+    <ClInclude Include="..\..\code\engine\gameplay\components\PlayerPhysicsComponent.h" />
     <ClInclude Include="..\..\code\engine\gameplay\components\ShapeComponent.h" />
     <ClInclude Include="..\..\code\engine\gameplay\Entity.hpp" />
     <ClInclude Include="..\..\code\engine\gameplay\GameplayManager.hpp" />
@@ -400,14 +402,14 @@
     <ClInclude Include="..\..\code\engine\input\InputManager.hpp" />
     <ClInclude Include="..\..\code\engine\physics\PhysicsManager.hpp" />
     <ClInclude Include="..\..\code\engine\util\StringId.hpp" />
-    <ClInclude Include="PhysicsComponent.h" />
-    <ClInclude Include="PlayerPhysicsComponent.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\code\engine\Engine.cpp" />
     <ClCompile Include="..\..\code\engine\gameplay\components\Component.cpp" />
     <ClCompile Include="..\..\code\engine\gameplay\components\InputComponent.cpp" />
+    <ClCompile Include="..\..\code\engine\gameplay\components\PhysicsComponent.cpp" />
     <ClCompile Include="..\..\code\engine\gameplay\components\PlayerInputComponent.cpp" />
+    <ClCompile Include="..\..\code\engine\gameplay\components\PlayerPhysicsComponent.cpp" />
     <ClCompile Include="..\..\code\engine\gameplay\components\ShapeComponent.cpp" />
     <ClCompile Include="..\..\code\engine\gameplay\Entity.cpp" />
     <ClCompile Include="..\..\code\engine\gameplay\GameplayManager.cpp" />
@@ -421,8 +423,6 @@
     <ClCompile Include="..\..\code\engine\main.cpp" />
     <ClCompile Include="..\..\code\engine\physics\PhysicsManager.cpp" />
     <ClCompile Include="..\..\code\engine\util\StringId.cpp" />
-    <ClCompile Include="PhysicsComponent.cpp" />
-    <ClCompile Include="PlayerPhysicsComponent.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

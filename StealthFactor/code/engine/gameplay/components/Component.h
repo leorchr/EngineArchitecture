@@ -7,6 +7,7 @@ public:
 	Component(class Entity& entity);
 	virtual ~Component();
 	void initialize();
+	Entity* getEntity();
 
 protected:
 	class Entity& entity;

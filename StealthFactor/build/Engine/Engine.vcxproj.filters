@@ -70,10 +70,10 @@
     <ClInclude Include="..\..\code\engine\gameplay\components\ShapeComponent.h">
       <Filter>gameplay\components</Filter>
     </ClInclude>
-    <ClInclude Include="PlayerPhysicsComponent.h">
+    <ClInclude Include="..\..\code\engine\gameplay\components\PhysicsComponent.h">
       <Filter>gameplay\components</Filter>
     </ClInclude>
-    <ClInclude Include="PhysicsComponent.h">
+    <ClInclude Include="..\..\code\engine\gameplay\components\PlayerPhysicsComponent.h">
       <Filter>gameplay\components</Filter>
     </ClInclude>
   </ItemGroup>
@@ -125,10 +125,10 @@
     <ClCompile Include="..\..\code\engine\gameplay\components\ShapeComponent.cpp">
       <Filter>gameplay\components</Filter>
     </ClCompile>
-    <ClCompile Include="PhysicsComponent.cpp">
+    <ClCompile Include="..\..\code\engine\gameplay\components\PhysicsComponent.cpp">
       <Filter>gameplay\components</Filter>
     </ClCompile>
-    <ClCompile Include="PlayerPhysicsComponent.cpp">
+    <ClCompile Include="..\..\code\engine\gameplay\components\PlayerPhysicsComponent.cpp">
       <Filter>gameplay\components</Filter>
     </ClCompile>
   </ItemGroup>

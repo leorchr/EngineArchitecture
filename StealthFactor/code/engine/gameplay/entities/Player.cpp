@@ -3,6 +3,7 @@
 #include <engine/gameplay/components/ShapeComponent.h>
 
 #include "Target.hpp"
+#include "engine/gameplay/components/PhysicsComponent.h"
 #include "engine/Engine.hpp"
 #include "engine/gameplay/GameplayManager.hpp"
 #include "engine/physics/PhysicsManager.hpp"
@@ -34,11 +35,15 @@ void Player::update()
 	auto collisions = context->physicsManager->getCollisionsWith(collisionGeomId);
 	for (auto &geomId : collisions)
 	{
-		auto entity = reinterpret_cast<Entity *>(dGeomGetData(geomId));
-		auto targetEntity = dynamic_cast<Target *>(entity);
-		if (targetEntity)
+		auto component = reinterpret_cast<PhysicsComponent *>(dGeomGetData(geomId));
+		
+		if (component)
 		{
-			context->gameplayManager->loadNextMap();
+			auto targetEntity = dynamic_cast<Target*>(component->getEntity());
+			if (targetEntity)
+			{
+				context->gameplayManager->loadNextMap();
+			}
 		}
 	}
 }

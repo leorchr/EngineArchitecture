@@ -1,6 +1,5 @@
 #pragma once
 
-#include <ode/collision.h>
 #include <engine/graphics/ShapeList.hpp>
 #include <engine/gameplay/Entity.hpp>
 
@@ -14,5 +13,5 @@ public:
 
 private:
 	ShapeList shapeList;
-	dGeomID collisionGeomId;
+	std::shared_ptr<class PhysicsComponent> physicsComponent;
 };
